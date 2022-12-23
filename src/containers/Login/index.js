@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Button, Input, Form, Dialog } from 'antd-mobile'
 import './index.css';
 
@@ -8,17 +7,12 @@ const initialValues = {
 };
 
 const Login = () => {
-  const [name, setName] = useState();
   const [form] = Form.useForm();
   const onSubmit = () => {
     const values = form.getFieldsValue()
     Dialog.alert({ 
       content: JSON.stringify(values),
     })
-  }
-
-  const onChangeNameHandler = (e) => {
-    setName(e)
   }
 
   return (
@@ -30,7 +24,7 @@ const Login = () => {
           <Button color="primary" onClick={onSubmit}>Login</Button>
         }>
         <Form.Item label='username' name='username'>
-          <Input placeholder='username' onChange={onChangeNameHandler} clearable />
+          <Input placeholder='username' clearable />
         </Form.Item>
         <Form.Item label='password' name='password'>
           <Input placeholder='password' clearable type='password'/>
