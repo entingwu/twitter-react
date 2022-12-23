@@ -1,26 +1,41 @@
-import { useState } from 'react';
+import { useState } from 'react'
+import { Button, Input, Form, Dialog } from 'antd-mobile'
 import './index.css';
+
+const initialValues = {
+  username: '',
+  password: 123
+};
 
 const Login = () => {
   const [name, setName] = useState();
-  const [password, setPassword] = useState();
+  const [form] = Form.useForm();
+  const onSubmit = () => {
+    const values = form.getFieldsValue()
+    Dialog.alert({ 
+      content: JSON.stringify(values),
+    })
+  }
 
-  const clickHandler = () => {
-    alert(name + ' login successfully')
-  }
   const onChangeNameHandler = (e) => {
-    setName(e.target.value)
-  }
-  const onChangePwHandler = (e) => {
-    setPassword(e.target.value)
+    setName(e)
   }
 
   return (
     <div className="login">
-        {name}
-        <div>User Name: <input onChange={onChangeNameHandler}/></div>
-        <div>Password: <input type="password" onChange={onChangePwHandler}/></div>
-        <div><button onClick={clickHandler}>Login</button></div>
+      <Form 
+        form={form}
+        layout='horizontal' mode='card' initialValues={initialValues}
+        footer={
+          <Button color="primary" onClick={onSubmit}>Login</Button>
+        }>
+        <Form.Item label='username' name='username'>
+          <Input placeholder='username' onChange={onChangeNameHandler} clearable />
+        </Form.Item>
+        <Form.Item label='password' name='password'>
+          <Input placeholder='password' clearable type='password'/>
+        </Form.Item>
+      </Form>    
     </div>
   );
 }
