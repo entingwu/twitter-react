@@ -1,5 +1,4 @@
-import { useState, useForm } from 'react';
-import { Button, Input, Form, PasscodeInput, NumberKeyboard, Dialog } from 'antd-mobile';
+import { Button, Input, Form, Dialog } from 'antd-mobile';
 import './index.css';
 
 const initialValues = {
@@ -8,31 +7,21 @@ const initialValues = {
 };
 
 const Login = () => {
-  const [name, setName] = useState('');
-  const [password, setPwd] = useState('');
-  const [form] = useForm('');
+  const [form] = Form.useForm('')
   const onSubmit = () => {
-    const values = form.getFieldValues();
+    const values = form.getFieldsValue()
     Dialog.alert({
       content: JSON.stringify(values)
     })
   };
 
-  const clickHandler = () => {
-    alert("Successfully Login!" + name + ',' + password);
-  }
-
-  const onChangeNameHandler = (e) => {
-    setName(e.target.value);
-  }
-
-  const onChangePasswordHandler = (e) => {
-    setPwd(e.target.value);
-  }
-
   return (
     <div className="login">
-      <Form layout='horizontal' mode='card' initialValues={initialValues}
+      <Form 
+        form={form}
+        layout='horizontal' 
+        mode='card' 
+        initialValues={initialValues}
         footer={
           <Button block color='primary' onClick={onSubmit} size='large'>
             Login
@@ -40,17 +29,12 @@ const Login = () => {
         }
       >
         <Form.Item label='User Name' name='username'>
-          <Input placeholder='Input User Name' />
+          <Input placeholder='Input User Name' clearable/>
         </Form.Item>
-        <Form.Item name='password'>
-          <PasscodeInput 
-            length={5}
-            keyboard={<NumberKeyboard />}
-          />
+        <Form.Item label='Password' name='password'>
+          <Input placeholder='Input Password' clearable type='password' />
         </Form.Item>
       </Form>
-      <div>User Name: <Input onChange={onChangeNameHandler}/></div>
-      <div>Password: <Input type="password" onChange={onChangePasswordHandler}/></div>
     </div>
   );
 }
