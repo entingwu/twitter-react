@@ -1,3 +1,4 @@
+import React  from 'react';
 import { Button, Input, Form, Dialog } from 'antd-mobile';
 import './index.css';
 
@@ -7,7 +8,7 @@ const initialValues = {
 };
 
 const Login = () => {
-  const [form] = Form.useForm('')
+  const [form] = Form.useForm('');
   const onSubmit = () => {
     const values = form.getFieldsValue()
     Dialog.alert({
@@ -17,10 +18,10 @@ const Login = () => {
 
   return (
     <div className="login">
-      <Form 
+      <Form
         form={form}
-        layout='horizontal' 
-        mode='card' 
+        layout='horizontal'
+        mode='card'
         initialValues={initialValues}
         footer={
           <Button block color='primary' onClick={onSubmit} size='large'>
@@ -29,7 +30,7 @@ const Login = () => {
         }
       >
         <Form.Item label='User Name' name='username'>
-          <Input placeholder='Input User Name' clearable/>
+          <Input placeholder='Input User Name' clearable />
         </Form.Item>
         <Form.Item label='Password' name='password'>
           <Input placeholder='Input Password' clearable type='password' />
