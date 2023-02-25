@@ -1,5 +1,6 @@
 import React  from 'react';
 import { Button, Input, Form, Dialog } from 'antd-mobile';
+import { loginService } from '../../services/login';
 import './index.css';
 
 const initialValues = {
@@ -9,10 +10,21 @@ const initialValues = {
 
 const Login = () => {
   const [form] = Form.useForm('');
-  const onSubmit = () => {
-    const values = form.getFieldsValue()
+
+  const onSubmit = async () => {
+    const values = form.getFieldsValue();
+    const response = await loginService(values.username, values.password);
+    
+    if (response && response.length > 0) {
+      console.log(response);
+      Dialog.alert({
+        content: 'Successfully Login',
+      });
+      return;
+    }
+
     Dialog.alert({
-      content: JSON.stringify(values)
+      content: 'Failed to login'
     })
   };
 
