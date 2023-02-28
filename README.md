@@ -15,3 +15,8 @@ promise
 
 ## backend web service
 use json-server
+
+## React 5 steps
+1. Break the UI into a component hierarchy 
+2. Build a static version in React
+3. 
