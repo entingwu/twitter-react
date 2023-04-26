@@ -24,3 +24,7 @@ use json-server
 - css 无法编写嵌套
 - scss 写简单的嵌套 -> 编译成css
 - cs module 不用关系命名空间，不会出现被覆盖的样式
+
+## Project Configuration
+- craco.config.js: short cut to config webpack file
+- jsconfig.json: js config file for vscode to use
