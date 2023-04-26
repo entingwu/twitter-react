@@ -19,7 +19,7 @@
         ]
       }
     ],
-    "react/react-in-jsx-scope": 0,
+    "react/react-in-jsx-scope": "off",
     "react/function-component-definition": 0
   },
   "env": {

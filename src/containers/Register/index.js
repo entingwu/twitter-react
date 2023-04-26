@@ -1,32 +1,31 @@
 import React from 'react';
 import { Input, Button } from 'antd-mobile';
-import { CloseOutline } from 'antd-mobile-icons';
-import logo from '../../assets/twitter-logo.svg';
-import './index.css';
+import style from './index.module.css';
+import Header from '../../components/Header';
+import DatePickerInput from '../../components/DatePickerInput';
 
 /**
  * Register Page
  */
 const Register = () => {
   console.log(">>>");
-  return <div className='register-page'>
-    <div className='header'>
-      <CloseOutline />
-      <img src={logo} alt="twitter-logo"></img>
-    </div>
-    <div className='form'>
-      <div>Create your account</div>
-      <Input placeholder="Name" />
-      <Input placeholder="Phone" />
-      <div>Use email instead</div>
-      <div>Birthday</div>
+  return (
+    <div>
+    <Header />
+    <div className={style.form}>
+      <div className={style.formTitle}>Create your account</div>
+      <Input placeholder="Name" className={style.input} />
+      <Input placeholder="Phone" className={style.input} />
+      <div className={style.changeTypeButton}>Use email instead</div>
+      <div className={style.birthdayTitle}>Birthday</div>
       <div>This will not be displayed publicly. Confirm your own age, even if the account is for business, pets, or other content.</div>
-      <Input placeholder="" />
+      <DatePickerInput />
     </div>
-    <div className='footer'>
-      <Button>Next step</Button>
+    <div className={style.footer}>
+      <Button className={style.footerButton}>Next step</Button>
     </div>
   </div>
+  );
 }
 
 export default Register;
