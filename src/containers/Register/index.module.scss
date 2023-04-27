@@ -5,15 +5,21 @@
   margin: 0 30px
 }
 
+.formContainer {
+  :global(.adm-list-body) {
+    background-color: none;
+    border: none;
+  }
+  :global(.adm-list-item-content) {
+    border: none;
+  }
+}
+
 .formTitle {
   font-size: 25px;
   font-weight: 700;
   height: 68px;
   line-height: 68px;
-}
-
-.input {
-  composes: input from "../../common.module.css";
 }
 
 .changeTypeButton {
