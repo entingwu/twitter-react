@@ -10,14 +10,14 @@
     }
   },
   "rules": {
-    "jsx-ally/no-static-element-interactions": 0,
-    "jsx-ally/click-events-have-key-events": 0,
     "max-len": [
       "error",
       {
         "code": 300
       }
     ],
+    "react/jsx-ally/no-static-element-interactions": 0,
+    "react/jsx-ally/click-events-have-key-events": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "react/react-in-jsx-scope": "off",
     "react/function-component-definition": 0

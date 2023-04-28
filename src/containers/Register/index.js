@@ -18,7 +18,7 @@ const Register = () => {
     name: 'Enting',
     tel: '',
     email: '',
-    birthday: '',
+    birthday: '19891221',
   });
   // switch action
   const [accountType, setAccountType] = useState(ACCOUNT_TYPE.TEL);
