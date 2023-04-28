@@ -14,14 +14,16 @@ const ACCOUNT_TYPE = {
  * Register Page
  */
 const Register = () => {
+  const [form] = Form.useForm();
   const [formData] = useState({
-    name: 'Enting',
+    name: '',
     tel: '',
     email: '',
     birthday: '19891221',
   });
   // switch action
   const [accountType, setAccountType] = useState(ACCOUNT_TYPE.TEL);
+
   const onAccountTypeChange = () => {
     if (accountType === ACCOUNT_TYPE.TEL) {
       setAccountType(ACCOUNT_TYPE.EMAIL);
@@ -30,17 +32,43 @@ const Register = () => {
     setAccountType(ACCOUNT_TYPE.TEL);
   };
 
+  const onClickNextStep = async () => {
+    const validate = await form.validateFields();
+    if (validate) {
+      const data = form.getFieldValue();
+      console.log('data', data);
+    }
+    console.log(validate);
+  };
+
   return (
     <div>
       <Header />
       <div className={style.form}>
         <div className={style.formTitle}>Create your account</div>
-        <Form initialValues={formData} className={style.formContainer}>
-          <Form.Item name="name">
+        <Form form={form} initialValues={formData} className={style.formContainer}>
+          <Form.Item
+            name="name"
+            rules={[{ required: true, message: 'Name could not be empty' }]}
+          >
             <Input placeholder="Name" className={style.input} />
           </Form.Item>
-          {accountType === ACCOUNT_TYPE.TEL && <Form.Item name="tel"><Input placeholder="Phone" className={style.input} /></Form.Item>}
-          {accountType === ACCOUNT_TYPE.EMAIL && <Form.Item name="email"><Input placeholder="Email" className={style.input} /></Form.Item>}
+          {accountType === ACCOUNT_TYPE.TEL && (
+            <Form.Item
+              name="tel"
+              rules={[{ required: true, message: 'Phone number could not be empty' }]}
+            >
+              <Input placeholder="Phone" className={style.input} />
+            </Form.Item>
+          )}
+          {accountType === ACCOUNT_TYPE.EMAIL && (
+            <Form.Item
+              name="email"
+              rules={[{ required: true, message: 'Email could not be empty' }]}
+            >
+              <Input placeholder="Email" className={style.input} />
+            </Form.Item>
+          )}
           <div className={style.changeTypeButton} onClick={onAccountTypeChange}>
             {accountType === ACCOUNT_TYPE.EMAIL ? 'Use phone instead' : 'Use email instead'}
           </div>
@@ -52,7 +80,7 @@ const Register = () => {
         </Form>
       </div>
       <div className={style.footer}>
-        <Button className={style.footerButton}>Next step</Button>
+        <Button className={style.footerButton} onClick={onClickNextStep}>Next step</Button>
       </div>
     </div>
   );

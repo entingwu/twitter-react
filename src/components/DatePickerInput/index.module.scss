@@ -1,6 +1,9 @@
+@import '../../common.module.scss';
+
 .birthdayInput {
-  composes: input from '../../common.module.css';
+  composes: input from '../../common.module.scss';
   margin-top: 10px;
+  height: 60px;
 }
 
 .datepickerIcon {
@@ -15,5 +18,5 @@
 }
 
 .birthdayTitleItem {
-  color: tBlue;
+  color: $tBlue;
 }

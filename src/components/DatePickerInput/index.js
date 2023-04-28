@@ -3,7 +3,7 @@ import { DatePicker } from 'antd-mobile';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import datepicker from '../../assets/datepicker-icon.svg';
-import style from './index.module.css';
+import style from './index.module.scss';
 
 /**
  * Birthday DatePicker: use propTypes to define properties
@@ -25,8 +25,7 @@ const DatePickerInput = ({
           setVisible(false);
         }}
         onConfirm={(val) => {
-          console.log('>>', val);
-          onChange(val);
+          onChange(moment(val).format('YYYYMMDD'));
         }}
       />
       <div className={style.birthdayInput} onClick={onClickDatePicker}>
