@@ -19,7 +19,7 @@ const Register = () => {
     name: '',
     tel: '',
     email: '',
-    birthday: '19891221',
+    birthday: '',
   });
   // switch action
   const [accountType, setAccountType] = useState(ACCOUNT_TYPE.TEL);
@@ -38,7 +38,6 @@ const Register = () => {
       const data = form.getFieldValue();
       console.log('data', data);
     }
-    console.log(validate);
   };
 
   return (
@@ -69,6 +68,7 @@ const Register = () => {
               <Input placeholder="Email" className={style.input} />
             </Form.Item>
           )}
+
           <div className={style.changeTypeButton} onClick={onAccountTypeChange}>
             {accountType === ACCOUNT_TYPE.EMAIL ? 'Use phone instead' : 'Use email instead'}
           </div>

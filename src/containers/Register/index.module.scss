@@ -9,7 +9,7 @@
 }
 
 .formContainer {
-  :global(.adm-list-body) {
+  :global(.adm-list-body) { // no hash value by using global
     background: none;
     border: none;
   }
