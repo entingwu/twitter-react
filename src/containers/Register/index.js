@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Input, Button, Form } from 'antd-mobile';
+import TInput from '@components/TInput';
 import Header from '@components/Header';
 import DatePickerInput from '@components/DatePickerInput';
 
@@ -50,14 +51,14 @@ const Register = () => {
             name="name"
             rules={[{ required: true, message: 'Name could not be empty' }]}
           >
-            <Input placeholder="Name" className={style.input} />
+            <TInput length={50} label="Name" />
           </Form.Item>
           {accountType === ACCOUNT_TYPE.TEL && (
             <Form.Item
               name="tel"
               rules={[{ required: true, message: 'Phone number could not be empty' }]}
             >
-              <Input placeholder="Phone" className={style.input} />
+              <TInput length={11} label="Phone" />
             </Form.Item>
           )}
           {accountType === ACCOUNT_TYPE.EMAIL && (
@@ -65,7 +66,7 @@ const Register = () => {
               name="email"
               rules={[{ required: true, message: 'Email could not be empty' }]}
             >
-              <Input placeholder="Email" className={style.input} />
+              <Input label="Email" className={style.input} />
             </Form.Item>
           )}
 
