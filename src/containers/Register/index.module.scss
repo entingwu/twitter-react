@@ -1,14 +1,25 @@
-@value tBlue #1d9bf0;
-@value tGray #868a8c;
+@import '../../common.module.scss';
+
+.common {
+  composes: input from '../../common.module.scss';
+}
 
 .form {
   margin: 0 30px
 }
 
 .formContainer {
-  :global(.adm-list-body) {
-    background-color: none;
+  :global(.adm-list-body) { // no hash value by using global
+    background: none;
     border: none;
+  }
+  :global(.adm-list-item) {
+    padding: 0;
+    margin: 0;
+  }
+  :global(.adm-list-item-content) {
+    padding: 0;
+    margin: 0;
   }
   :global(.adm-list-item-content) {
     border: none;
@@ -23,7 +34,7 @@
 }
 
 .changeTypeButton {
-  color: tBlue
+  color: $tBlue
 }
 
 .birthdayTitle {
@@ -40,12 +51,17 @@
   width: 100%;
 }
 
-.footerButton {
+.footerButtonDisabled {
   margin: 0 auto;
   border-radius: 50px;
-  background-color: tGray;
+  background-color: $tGray;
   color: #fff;
   font-size: 16px;
   width: 80%;
   height: 40px;
+}
+
+.footerButton {
+  composes: footerButtonDisabled;
+  background-color: black;
 }
