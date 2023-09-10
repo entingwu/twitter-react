@@ -1,10 +1,10 @@
 import { Input } from 'antd-mobile';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import style from './index.module.scss';
 
 /**
- * 富交互的Input
+ * Interactive Input
  */
 const TInput = ({
   label,
@@ -14,6 +14,15 @@ const TInput = ({
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [hide, setHide] = useState(false);
+
+  // initialization
+  useEffect(() => {
+    if (value) {
+      setIsFocused(true);
+      setHide(true);
+    }
+  }, []); // initialize, only run once
+
   const onFocus = () => {
     setIsFocused(true);
     setHide(true);
@@ -67,7 +76,7 @@ TInput.defaultProps = {
   label: '',
   value: undefined,
   length: undefined,
-  onChange: undefined,
+  onChange: () => {},
 };
 
 export default TInput;

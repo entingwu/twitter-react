@@ -20,6 +20,8 @@ use json-server
 1. Break the UI into a component hierarchy 
 2. Build a static version in React
 3. Figure out the minimum representation of the UI state
+4. Figure out the position of state
+5. Add reverse data flow
 
 ## style technique choices
 - css 无法编写嵌套
