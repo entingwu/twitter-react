@@ -1,16 +1,11 @@
 {
   "user": [
     {
-      "username": "chenchen",
-      "password": "12345",
-      "age": "2",
-      "address": "seattle"
-    },
-    {
-      "username": "junjun",
-      "password": "98765",
-      "age": "0",
-      "address": "bellevue"
+      "password": "123",
+      "username": "christywu",
+      "tel": "13533398739",
+      "birthday": "20231007",
+      "id": 1
     }
   ]
 }

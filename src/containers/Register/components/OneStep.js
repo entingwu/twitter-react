@@ -20,7 +20,7 @@ const OneStep = ({
 }) => {
   const [form] = Form.useForm();
   const [formData] = useState({
-    name: '',
+    username: '',
     tel: '',
     email: '',
     birthday: '',
@@ -50,7 +50,6 @@ const OneStep = ({
       const validate = await form.validateFields();
       if (validate) {
         setFooterButtonDisabled(false);
-        return;
       }
     } catch (e) {
       if (e.errorFields.length === 0) {
@@ -72,7 +71,7 @@ const OneStep = ({
           className={style.formContainer}
         >
           <Form.Item
-            name="name"
+            name="username"
             rules={[{ required: true, message: 'Name could not be empty' }]}
           >
             <TInput length={50} label="Name" />

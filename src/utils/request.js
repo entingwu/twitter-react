@@ -12,10 +12,7 @@ axios.interceptors.request.use((config) => ({
 }));
 
 // 对返回的结果做拦截，主要有两部分：数据转换 错误的处理
-axios.interceptors.response.use((response) => {
-  console.log(response.data);
-  return response.data;
-}, (err) => Promise.reject(err));
+axios.interceptors.response.use((response) => response.data, (err) => Promise.reject(err));
 
 // get 获取服务器资源
 export const get = (url) => axios.get(url);

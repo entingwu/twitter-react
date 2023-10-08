@@ -37,7 +37,7 @@ const TwoStep = ({
         <div className={style.showLabelContainer}>
           <div className={style.showLabel}>
             Name:
-            <span>{userInfo.name}</span>
+            <span>{userInfo.username}</span>
           </div>
           {userInfo.email && (
           <div className={style.showLabel}>
@@ -70,7 +70,7 @@ const TwoStep = ({
 TwoStep.propTypes = {
   confirmRegisterHandler: PropTypes.func.isRequired,
   userInfo: PropTypes.shape({
-    name: PropTypes.string,
+    username: PropTypes.string,
     email: PropTypes.string,
     tel: PropTypes.string,
     birthday: PropTypes.string,

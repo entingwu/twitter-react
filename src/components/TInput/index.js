@@ -50,7 +50,7 @@ const TInput = ({
         {label}
         {hide && (
         <span className={style.labelRight}>
-          {value.length}
+          {value?.length}
           /
           {length}
         </span>
