@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Toast } from 'antd-mobile';
 
 // 拦截器
 // http://google.com/user
@@ -12,7 +13,10 @@ axios.interceptors.request.use((config) => ({
 }));
 
 // 对返回的结果做拦截，主要有两部分：数据转换 错误的处理
-axios.interceptors.response.use((response) => response.data, (err) => Promise.reject(err));
+axios.interceptors.response.use((response) => response.data, () => {
+  // Promise.reject(err)
+  Toast.show('Service call failed');
+});
 
 // get 获取服务器资源
 export const get = (url) => axios.get(url);

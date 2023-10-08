@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Toast } from 'antd-mobile';
 import Header from '@components/Header';
 import Show from '@components/Show';
 import { registerUser } from '@services/register';
@@ -29,6 +30,11 @@ const Register = () => {
       ...userInfo,
     });
     console.log('>>>', res);
+    if (res.success) {
+      Toast.show('Login successfully.');
+      return;
+    }
+    Toast.show('Failed to login.');
   };
 
   const onClickClose = () => {
