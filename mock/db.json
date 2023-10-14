@@ -1,16 +1,32 @@
 {
   "user": [
     {
-      "username": "chenchen",
-      "password": "12345",
-      "age": "2",
-      "address": "seattle"
+      "password": "123",
+      "username": "christywu",
+      "tel": "13533398739",
+      "birthday": "20231007",
+      "id": 1
     },
     {
-      "username": "junjun",
-      "password": "98765",
-      "age": "0",
-      "address": "bellevue"
+      "password": "123",
+      "username": "christywu19891221@gmail.com",
+      "tel": "13533398739",
+      "birthday": "20231007",
+      "id": 2
+    },
+    {
+      "password": "123",
+      "username": "christywu19891221@gmail.com",
+      "tel": "13533398739",
+      "birthday": "20231007",
+      "id": 3
+    },
+    {
+      "password": "123",
+      "username": "christywu19891221@gmail.com",
+      "tel": "13533398739",
+      "birthday": "20231007",
+      "id": 4
     }
   ]
 }

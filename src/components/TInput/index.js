@@ -29,8 +29,10 @@ const TInput = ({
   };
 
   const onBlur = () => {
-    if (value.length === 0) {
+    if (!value || value.length === 0) {
       setIsFocused(false);
+      setHide(false);
+      return;
     }
     setHide(false);
   };
@@ -48,7 +50,7 @@ const TInput = ({
         {label}
         {hide && (
         <span className={style.labelRight}>
-          {value.length}
+          {value?.length}
           /
           {length}
         </span>

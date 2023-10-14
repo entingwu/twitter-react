@@ -36,6 +36,14 @@
           [
             "@assets",
             "./src/assets"
+          ],
+          [
+            "@utils",
+            "./src/utils"
+          ],
+          [
+            "@services",
+            "./src/services"
           ]
         ]
       }

@@ -1,15 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './index.css';
 import Register from './containers/Register';
 
 // import { startVconsole } from './utils';
 
-ReactDOM.render(
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
+
+root.render(
   <React.StrictMode>
     <Register />
   </React.StrictMode>,
-  document.getElementById('root'),
 );
 
 // startVconsole();
