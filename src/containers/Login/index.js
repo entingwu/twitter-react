@@ -1,55 +1,70 @@
-import React  from 'react';
-import { Button, Input, Form, Dialog } from 'antd-mobile';
-import { loginService } from '../../services/login';
-import './index.css';
+import React from 'react';
+import { Button, Form, Dialog } from 'antd-mobile';
+import TInput from '@components/TInput';
+import Header from '@components/Header';
+import { login } from '../../services/login';
+import style from './index.module.scss';
 
-const initialValues = {
-  username: 'chenchen',
-  password: '12345'
-};
-
+/**
+ * Login Page
+ */
 const Login = () => {
   const [form] = Form.useForm('');
 
   const onSubmit = async () => {
-    const values = form.getFieldsValue();
-    const response = await loginService(values.username, values.password);
-    
-    if (response && response.length > 0) {
-      console.log(response);
+    const values = await form.validateFields();
+    if (values) {
+      const response = await login(values.username, values.password);
+      if (response.success && response.data.length > 0) {
+        console.log(response);
+        Dialog.alert({
+          content: 'Successfully Login',
+        });
+        return;
+      }
       Dialog.alert({
-        content: 'Successfully Login',
+        content: 'Failed to login',
       });
-      return;
     }
-
-    Dialog.alert({
-      content: 'Failed to login'
-    })
   };
 
   return (
-    <div className="login">
-      <Form
-        form={form}
-        layout='horizontal'
-        mode='card'
-        initialValues={initialValues}
-        footer={
-          <Button block color='primary' onClick={onSubmit} size='large'>
-            Login
+    <>
+      <Header />
+      <div className={style.login}>
+        <div className={style.formTitle}>Login Twitter</div>
+        <Form
+          form={form}
+          className={style.formContainer}
+        >
+          <Form.Item
+            name="username"
+            rules={[{ required: true, message: 'Name could not be empty' }]}
+          >
+            <TInput label="User Name" />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[{ required: true, message: 'Password could not be empty' }]}
+          >
+            <TInput label="password" type="password" />
+          </Form.Item>
+          <Button className={style.footerButton} onClick={onSubmit}>
+            Next Step
           </Button>
-        }
-      >
-        <Form.Item label='User Name' name='username'>
-          <Input placeholder='Input User Name' clearable />
-        </Form.Item>
-        <Form.Item label='Password' name='password'>
-          <Input placeholder='Input Password' clearable type='password' />
-        </Form.Item>
-      </Form>
-    </div>
+        </Form>
+        <div className={style.goToRegister}>
+          No account yet?
+          <a
+            href="/"
+            target="_blank"
+          >
+            Register
+          </a>
+        </div>
+      </div>
+    </>
   );
-}
+};
 
 export default Login;
