@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Form, Dialog } from 'antd-mobile';
+import { Link } from 'react-router-dom';
 import TInput from '@components/TInput';
-import Header from '@components/Header';
 import { login } from '../../services/login';
 import style from './index.module.scss';
 
@@ -29,41 +29,37 @@ const Login = () => {
   };
 
   return (
-    <>
-      <Header />
-      <div className={style.login}>
-        <div className={style.formTitle}>Login Twitter</div>
-        <Form
-          form={form}
-          className={style.formContainer}
+    <div className={style.login}>
+      <div className={style.formTitle}>Login Twitter</div>
+      <Form
+        form={form}
+        className={style.formContainer}
+      >
+        <Form.Item
+          name="username"
+          rules={[{ required: true, message: 'Name could not be empty' }]}
         >
-          <Form.Item
-            name="username"
-            rules={[{ required: true, message: 'Name could not be empty' }]}
-          >
-            <TInput label="User Name" />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            rules={[{ required: true, message: 'Password could not be empty' }]}
-          >
-            <TInput label="password" type="password" />
-          </Form.Item>
-          <Button className={style.footerButton} onClick={onSubmit}>
-            Next Step
-          </Button>
-        </Form>
-        <div className={style.goToRegister}>
-          No account yet?
-          <a
-            href="/"
-            target="_blank"
-          >
-            Register
-          </a>
-        </div>
+          <TInput label="User Name" />
+        </Form.Item>
+        <Form.Item
+          name="password"
+          rules={[{ required: true, message: 'Password could not be empty' }]}
+        >
+          <TInput label="password" type="password" />
+        </Form.Item>
+        <Button className={style.footerButton} onClick={onSubmit}>
+          Next Step
+        </Button>
+      </Form>
+      <div className={style.goToRegister}>
+        No account yet?
+        <Link
+          to="/register"
+        >
+          Register
+        </Link>
       </div>
-    </>
+    </div>
   );
 };
 

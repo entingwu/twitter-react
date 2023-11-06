@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Toast } from 'antd-mobile';
-import Header from '@components/Header';
 import Show from '@components/Show';
 import { registerUser } from '@services/register';
 import OneStep from './components/OneStep';
@@ -37,13 +36,12 @@ const Register = () => {
     Toast.show('Failed to login.');
   };
 
-  const onClickClose = () => {
-    setStep(STEP.ONE);
-  };
+  // const onClickClose = () => {
+  //   setStep(STEP.ONE);
+  // };
 
   return (
     <div>
-      <Header onClickClose={onClickClose} />
       <Show visible={step === STEP.ONE}>
         <OneStep goToNextStepHandler={goToNextStepHandler} />
       </Show>
