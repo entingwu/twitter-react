@@ -27,7 +27,7 @@ const OneStep = ({
   });
   // switch action
   const [accountType, setAccountType] = useState(ACCOUNT_TYPE.TEL);
-
+  // useState 一个组件数据存储单元
   const [footerButtonDisabled, setFooterButtonDisabled] = useState(true);
 
   const onAccountTypeChange = () => {

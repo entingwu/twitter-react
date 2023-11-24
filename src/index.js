@@ -5,6 +5,7 @@ import './index.css';
 import Register from '@containers/Register';
 import Login from '@containers/Login';
 import App from '@containers/App';
+import { CxtProvider } from '@utils/context';
 
 // import { startVconsole } from './utils';
 
@@ -13,14 +14,16 @@ const root = createRoot(rootElement);
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <CxtProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </CxtProvider>
   </React.StrictMode>,
 );
 

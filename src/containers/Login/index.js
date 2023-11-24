@@ -1,7 +1,8 @@
-import React from 'react';
+import { useEffect, React } from 'react';
 import { Button, Form, Dialog } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import TInput from '@components/TInput';
+import { useAppContext } from '@utils/context';
 import { login } from '../../services/login';
 import style from './index.module.scss';
 
@@ -10,6 +11,12 @@ import style from './index.module.scss';
  */
 const Login = () => {
   const [form] = Form.useForm('');
+  const [, setStore] = useAppContext();
+  useEffect(() => {
+    setStore({
+      closeHeaderHandler: () => null,
+    });
+  }, []);
 
   const onSubmit = async () => {
     const values = await form.validateFields();
