@@ -44,6 +44,10 @@
           [
             "@services",
             "./src/services"
+          ],
+          [
+            "@containers",
+            "./src/containers"
           ]
         ]
       }
