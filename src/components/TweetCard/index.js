@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import moment from 'moment';
 
 import ImageCard from '@components/ImageCard';
+import Bar from '@components/Bar';
 import style from './index.module.scss';
 
 const tweet = {
@@ -30,7 +31,7 @@ const tweet = {
     },
   ],
   created_at: '2023-11-18T07:38:01.699129Z',
-  content: 'Id values are not mutable. Any id value in the body of your',
+  content: 'Id values are not mutable. Any id value in the body of your PUT or PATCH request will be ignored. Only a value set in a POST request will be respected, but only if not already taken.',
   likes: [],
   likes_count: 0,
   comments_count: 1,
@@ -72,10 +73,14 @@ const TweetCard = () => {
           {tweet.content}
         </div>
         <div className={style.photo}>
-          <ImageCard imgs={tweet.photo_urls} />
+          <ImageCard
+            imgs={tweet.photo_urls}
+            commentsCount={tweet.comments_count}
+            likesCount={tweet.likes_count}
+          />
         </div>
         <div className={style.bar}>
-          {}
+          <Bar commentsCount={tweet.comments_count} likesCount={tweet.likes_count} />
         </div>
       </div>
     </div>
