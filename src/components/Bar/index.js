@@ -7,16 +7,18 @@ import upSvg from '@assets/up.svg';
 import msgSvg from '@assets/msg.svg';
 import classNames from 'classnames';
 
+import { useNavigate } from 'react-router-dom';
 import style from './index.module.scss';
 
 const getBars = ({
   commentsCount,
   likesCount,
+  nav,
 }) => [
   {
     key: 'msg',
     icon: (
-      <div>
+      <div onClick={() => nav('/comment')}>
         <img className={style.icon} src={msgSvg} alt="" />
         {commentsCount > 0 && <span className={style.count}>{commentsCount}</span>}
       </div>),
@@ -48,6 +50,7 @@ const Bar = ({
   commentsCount,
 }) => {
   const [activeKey, setActiveKey] = useState();
+  const nav = useNavigate();
 
   const onChangeTabItem = (key) => {
     setActiveKey(key);
@@ -63,6 +66,7 @@ const Bar = ({
         {getBars({
           likesCount,
           commentsCount,
+          nav,
         }).map((item) => (
           <TabBar.Item key={item.key} icon={item.icon} />
         ))}

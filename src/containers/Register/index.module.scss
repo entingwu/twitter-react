@@ -1,7 +1,7 @@
-@import '../../common.module.scss';
+@import '../../index.scss';
 
 .common {
-  composes: input from '../../common.module.scss';
+  composes: input from '../../index.scss';
 }
 
 .form {

@@ -7,3 +7,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #fff;
 }
+
+$tBlue: #1d9bf0;
+$tGray: #868a8c;
+$tLightGray: #cfd9de;
+$tFontColor: #536471;
+$tBorderColor: #eee;
+
+:root:root {
+}
+
+.adm-text-area {
+  --placeholder-color: $tFontColor;
+}

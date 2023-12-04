@@ -5,6 +5,7 @@
       "username": "christywu",
       "tel": "13533398739",
       "birthday": "20231007",
+      "avatar_url": "https://www.thatsmags.com/image/view/201805/cover1.jpeg",
       "id": 1
     },
     {
@@ -12,6 +13,7 @@
       "username": "christywu19891221@gmail.com",
       "tel": "13533398739",
       "birthday": "20231007",
+      "avatar_url": "https://www.telegraph.co.uk/content/dam/fashion/OCT/Oct16/angelababy-lead2.jpg?imwidth=960",
       "id": 2
     },
     {
@@ -19,6 +21,7 @@
       "username": "christywu19891221@gmail.com",
       "tel": "13533398739",
       "birthday": "20231007",
+      "avatar_url": "https://wallpapercave.com/wp/wp3027815.jpg",
       "id": 3
     },
     {
@@ -26,7 +29,15 @@
       "username": "christywu19891221@gmail.com",
       "tel": "13533398739",
       "birthday": "20231007",
+      "avatar_url": "https://img.goodfon.com/original/1920x1200/5/6d/asian-beauty-angelababy.jpg",
       "id": 4
+    },
+    {
+      "password": "123",
+      "username": "christywu1221",
+      "tel": "13533398739",
+      "birthday": "20231203",
+      "id": 5
     }
   ]
 }

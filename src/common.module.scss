@@ -1,6 +1,4 @@
-$tBlue: #1d9bf0;
-$tGray: #868a8c;
-$tLightGray: #cfd9de;
+@import './index.scss';
 
 .input {
   border: solid 1px $tLightGray;
@@ -33,4 +31,17 @@ $tLightGray: #cfd9de;
   font-weight: 700;
   height: 68px;
   line-height: 68px;
+}
+
+.icon {
+  height: 20px;
+}
+
+.container {
+  border-top: 1px solid $tGray;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }

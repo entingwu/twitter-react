@@ -14,7 +14,7 @@ const defaultStore = {
 /**
  * Step1: Create context
  */
-export const AppContext = createContext();
+const AppContext = createContext();
 
 /**
  * Step2: Wrap component
@@ -23,9 +23,16 @@ export const CxtProvider = ({
   children,
 }) => {
   const [store, setStore] = useState(defaultStore);
+  const update = (v) => {
+    setStore((st) => ({
+      ...st, // save previous state
+      ...v, // new
+    }));
+  };
+
   // setStore, depends on store change.
   const value = useMemo(() => ({
-    store, setStore,
+    store, update,
   }), [store]);
 
   return (
@@ -45,7 +52,7 @@ CxtProvider.propTypes = {
  */
 export const useAppContext = () => {
   const cxt = useContext(AppContext);
-  return [cxt.store, cxt.setStore];
+  return [cxt.store, cxt.update];
 };
 
 // step1
