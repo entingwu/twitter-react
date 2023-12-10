@@ -3,6 +3,7 @@ import { Button, Form, Dialog } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import TInput from '@components/TInput';
 import { useAppContext } from '@utils/context';
+import cookies from 'js-cookie';
 import { login } from '../../services/login';
 import style from './index.module.scss';
 
@@ -27,6 +28,7 @@ const Login = () => {
         Dialog.alert({
           content: 'Successfully Login',
         });
+        cookies.set('userId', response.data[0].id);
         return;
       }
       Dialog.alert({

@@ -1,15 +1,48 @@
 import Bottom from '@components/Bottom';
 import Header from '@components/Header';
-import { Outlet } from 'react-router-dom';
-
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useAppContext } from '@utils/context';
+import { getUser } from '@services/login';
+import Cookies from 'js-cookie';
+import { Toast } from 'antd-mobile';
 import style from './index.module.scss';
 
-const App = () => (
-  <div className={style.container}>
-    <Header />
-    <Outlet />
-    <Bottom />
-  </div>
-);
+const App = () => {
+  const [, setStore] = useAppContext();
+  const nav = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const init = async () => {
+      const userId = Cookies.get('userId');
+      console.log('userId', userId);
+      if (!userId) {
+        Toast.show('Please login again...');
+        nav('/login');
+      }
+
+      const res = await getUser(userId);
+      if (res.data) {
+        setStore({
+          user: res.data,
+        });
+        if (location.pathname === '/login') {
+          nav('/tweets');
+        }
+        return;
+      }
+      nav('/login');
+    };
+    init();
+  }, []);
+  return (
+    <div className={style.container}>
+      <Header />
+      <Outlet />
+      <Bottom />
+    </div>
+  );
+};
 
 export default App;
