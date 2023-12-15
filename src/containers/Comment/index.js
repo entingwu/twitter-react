@@ -1,7 +1,12 @@
-import { Steps, TextArea } from 'antd-mobile';
+import { Steps, TextArea, Toast } from 'antd-mobile';
 import { useState, useEffect } from 'react';
 import { useAppContext } from '@utils/context';
+import { useGoTo } from '@utils/hooks';
+import { useParams } from 'react-router-dom';
 import moment from 'moment';
+import TButton from '@components/TButton';
+import Header from '@components/Header';
+import { createComment } from '@services/comment';
 import style from './index.module.scss';
 
 const { Step } = Steps;
@@ -42,14 +47,42 @@ const defaultTweet = {
  * Comment Function
  */
 const Comment = () => {
-  const [data, setData] = useState(defaultTweet);
   const [store] = useAppContext();
+  const [data, setData] = useState(defaultTweet);
+  const [text, setText] = useState('');
+  const go = useGoTo();
+  const params = useParams();
+  console.log('params', params);
+
   useEffect(() => {
-    console.log('data', data);
     setData(defaultTweet);
   }, []);
+
+  const onClickReply = () => {
+    createComment({
+      content: text,
+      tweet_id: params.id,
+    }).then((res) => {
+      if (res?.success) {
+        Toast.show('Reply successfully');
+        go(); // back to previous page
+        return;
+      }
+      Toast.show('Reply failed');
+      console.log('res', res);
+    });
+  };
+
+  const onChangeText = (v) => {
+    setText(v);
+  };
+  console.log('text', text.length === 0);
+
   return (
     <div className={style.container}>
+      <Header>
+        <TButton disabled={text.length === 0} onClick={onClickReply}>Reply</TButton>
+      </Header>
       <Steps direction="vertical">
         <Step
           icon={<img className={style.icon} src={data.user.avatar_url} alt="" />}
@@ -83,10 +116,10 @@ const Comment = () => {
           }
           title={(
             <div>
-              <TextArea className={style.text} placeholder="post your reply" />
+              <TextArea value={text} onChange={onChangeText} className={style.text} placeholder="post your reply" />
             </div>
           )}
-          description={<div>这里是一些描述</div>}
+          description={<div>description</div>}
         />
       </Steps>
     </div>

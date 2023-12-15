@@ -6,12 +6,14 @@ import { useAppContext } from '@utils/context';
 import { getUser } from '@services/login';
 import Cookies from 'js-cookie';
 import { Toast } from 'antd-mobile';
+import { useCurMenu } from '@utils/hooks';
 import style from './index.module.scss';
 
 const App = () => {
   const [, setStore] = useAppContext();
   const nav = useNavigate();
   const location = useLocation();
+  const menu = useCurMenu();
 
   useEffect(() => {
     const init = async () => {
@@ -38,7 +40,7 @@ const App = () => {
   }, []);
   return (
     <div className={style.container}>
-      <Header />
+      {!menu.hideHeader && <Header />}
       <Outlet />
       <Bottom />
     </div>

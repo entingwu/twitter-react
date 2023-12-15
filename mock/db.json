@@ -32,5 +32,22 @@
       "avatar_url": "https://img.goodfon.com/original/1920x1200/5/6d/asian-beauty-angelababy.jpg",
       "id": 4
     }
+  ],
+  "comments": [
+    {
+      "content": "dsdsds",
+      "tweet_id": "1",
+      "id": 1
+    },
+    {
+      "content": "dsdsds",
+      "tweet_id": "1",
+      "id": 2
+    },
+    {
+      "content": "dsdsds",
+      "tweet_id": "1",
+      "id": 3
+    }
   ]
 }
